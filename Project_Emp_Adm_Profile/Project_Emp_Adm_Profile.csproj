@@ -183,6 +183,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CreateNews.css" />
     <Content Include="Content\Layout.css" />
     <Content Include="Content\LoginPageStyle.css" />
     <Content Include="Content\MainPageStyle.css" />
@@ -288,6 +289,7 @@
     <Content Include="Views\Queries\Index.cshtml" />
     <Content Include="Views\NewsFeed1\Index.cshtml" />
     <Content Include="Views\Shared\News.cshtml" />
+    <Content Include="Views\NewsFeed1\CreateNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -49,7 +49,6 @@
     padding: 5px;
     margin:5px;
     overflow-y:auto;
-    scrollbar-width:none;
 }
 .queryPanel {
     -ms-overflow-style: none; 
@@ -70,7 +69,17 @@
     border-radius: 20px 20px 20px 20px;
     position: absolute;
     padding: 5px;
+    overflow-y: auto;
 }
+
+.newsPanel {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+    .newsPanel::-webkit-scrollbar {
+        display: none;
+    }
 
 .App-Name {
     padding-top: 15px;

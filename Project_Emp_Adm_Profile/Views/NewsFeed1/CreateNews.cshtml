@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "CreateNews";
+    Layout = "~/Views/Shared/_LayoutforMainPage.cshtml";
+}
+
+@Styles.Render("~/Content/CreateNews.css")
+
+@using (Html.BeginForm("PostNews", "NewsFeed1"))
+{
+    <div class="new-news">
+        <h2>Share a news</h2>
+        <input class="title" type="text" id="title" name="title" placeholder="Add News title here..." required />
+        <textarea class="description" id="decscription" name="description" placeholder="Add News description here..." rows="4" maxlength="1000" required></textarea><br />
+        <button class="btn-post" type="submit">Post</button>
+    </div>
+}
+
