@@ -1,0 +1,14 @@
+﻿@model Project_Emp_Adm_Profile.Models.Emp
+<link href="~/css/font-awesome.min.css" rel="stylesheet" />
+<div style="background-color: white; width: 20%;border-radius:25px ;height: 85%; margin-top: 4%; margin-left:2% ;position: absolute;">
+    <div style="text-align: center; background-color: deepskyblue; height: 130px; border-top-left-radius:25px;border-top-right-radius:25px;">
+        <img src="@Url.Content(Model.EPhoto)" alt="@Model.EPhoto" style="position:relative ;width:100px; height:100px; top:80px;border-radius:50%; " /> <br />
+    </div>
+    <div style="position:relative ;top:70px; text-align:center; font-weight:bold;font-size:1.8em ;font-family:Garamond;">
+        @Html.DisplayFor(model => model.EName)<br />
+
+        @Html.DisplayFor(model => model.EDesig)<br />
+        <i class="fa fa-2x fa-sign-out" aria-hidden="true" style="left:70px;"
+           onclick="location.href='@Url.Action("signOut","SignIns")'"></i>
+    </div>
+</div>

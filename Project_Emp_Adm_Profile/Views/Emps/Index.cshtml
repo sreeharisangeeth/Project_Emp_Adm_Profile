@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Project_Emp_Adm_Profile.Models.Emp>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutForProfilePage.cshtml";
+}
+
+<div class="leftPanel">
+    @Html.Partial("PV_AdminEditLeftPanel", Session["AdminObj"])
+</div>
+<div class="RightPanel">
+    <h3 class="text-center">All Employee Details</h3>
+    <p>
+        <i class="fa fa-2x fa-plus-circle" aria-hidden="true"
+           onclick="location.href='@Url.Action("Create", "Emps")'"></i>
+        @*@Html.ActionLink("Create New Employee", "Create")*@
+    </p>
+    <table style="background-color:white; border-radius:15px; border-top:hidden; text-align:center;" class="table table-borderless">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EDesig)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EPhoto)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.EPassword)
+                </th>*@
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EDesig)
+                </td>
+                <td>
+                    <img src="@Url.Content(item.EPhoto)" width="40px" height="40px" alt=@item.EPhoto />
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.EPassword)
+                    </td>*@
+                <td>
+                    <i class="fa fa-2x fa-address-book-o" aria-hidden="true"
+                       onclick="location.href='@Url.Action("Details", "Emps", new {id=item.EId})'"></i> |
+                    <i class="fa fa-2x fa-trash-o" aria-hidden="true"
+                       onclick="location.href='@Url.Action("Delete","Emps", new {id=item.EId})'"></i>
+                    @*@Html.ActionLink("Details", "Details", new { id = item.EId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.EId })*@
+                </td>
+            </tr>
+        }
+    </table>
+    <div>
+        <h4 style="color:deepskyblue" onclick="location.href='@Url.Action("Index","Admins")'">
+            All Admins Details
+            <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+        </h4>
+    </div>
+    @*@Html.ActionLink("Admin Details", "Index", "Admins")*@
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10 text-success">
+            @ViewBag.FileStatus
+        </div>
+    </div>
+
+</div>
+

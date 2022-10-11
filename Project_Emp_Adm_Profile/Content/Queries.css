@@ -1,0 +1,159 @@
+﻿.outer {
+    margin: 2em auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.new-query {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+    gap: 1em;
+    background-color: silver;
+    border-radius: 2em;
+}
+
+    .new-query .new-category {
+        border-radius: 2em;
+        padding: 1em;
+        width: 12em;
+    }
+
+.new-category option {
+    font-size: medium;
+    padding: 1em;
+    width: 12em;
+}
+
+.new-query .title-category {
+    min-width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+.new-query .title {
+    border-radius: 2em;
+    padding: 1em;
+    padding-left: 2em;
+    border: 1px solid grey;
+    min-width: 80%;
+}
+
+.new-query .description {
+    resize: none;
+    border-radius: 2em;
+    padding: 2em;
+    border: 1px solid grey;
+    min-width: 80%;
+    min-height: 20%
+}
+
+.new-query .btn-post {
+    background-color: green;
+    color: whitesmoke;
+    border: none;
+    border-radius: 2em;
+    padding: 1em;
+    width: 8em;
+}
+
+.posts {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    padding: 0;
+    /*overflow-y: scroll;
+    height: 72vh;*/
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    background-color: silver;
+    padding: 2% 2% 2% 2%;
+    border-radius: 2em;
+    font-weight: 600;
+    min-width: 100%;
+}
+
+.employee {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2em;
+}
+
+img {
+    border-radius: 50%;
+    width: 8em;
+    height: 8em;
+}
+
+.categoryName {
+    padding: 1% 1% 1% 1%;
+    background-color: dodgerblue;
+    border-radius: 2em;
+    color: white;
+    max-width: fit-content;
+}
+
+.query {
+    padding: 2% 2% 2% 2%;
+    background-color: white;
+    border-radius: 2em;
+}
+
+.post button {
+    background-color: white;
+    border: none;
+    border-radius: 2em;
+    width: 8em;
+    padding: 0.5em;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+    gap: 2em;
+    background-color: white;
+    border-radius: 2em;
+}
+
+select {
+    border-radius: 2em;
+    padding: 1em;
+    width: 12em;
+}
+
+    select option {
+        font-size: medium;
+        padding: 1em;
+        width: 12em;
+    }
+
+.search .key {
+    border-radius: 2em;
+    border: 1px solid grey;
+    padding: 1em;
+    min-width: 60%;
+}
+
+.search .btn-search {
+    background-color: green;
+    color: whitesmoke;
+    border: none;
+    border-radius: 2em;
+    padding: 1em;
+    width: 8em;
+}

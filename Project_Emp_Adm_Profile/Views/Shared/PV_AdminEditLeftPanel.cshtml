@@ -1,0 +1,12 @@
+﻿@model Project_Emp_Adm_Profile.Models.Admin
+<link href="~/css/font-awesome.min.css" rel="stylesheet" />
+<div style="background-color: white; width: 20%;border-radius:25px ;height: 85%; margin-top: 4%; margin-left:2% ;position: absolute;">
+    <div style="text-align: center; background-color: deepskyblue; height: 130px; border-top-left-radius:25px;border-top-right-radius:25px;">
+        <img src="~/Image/AdminProfile.png" alt="Admin Profile" style="position:relative ;width:100px; height:100px; top:80px;border-radius:20%; " /> <br />
+    </div>
+    <div style="position:relative ;top:70px; text-align:center; font-weight:bold;font-size:1.8em ;font-family:Garamond;">
+        @Html.DisplayFor(model => model.AName)<br />
+        <i class="fa fa-2x fa-sign-out" aria-hidden="true" style="left:70px;"
+           onclick="location.href='@Url.Action("signOut","SignIns")'"></i>
+    </div>
+</div>

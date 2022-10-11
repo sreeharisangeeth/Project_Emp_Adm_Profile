@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutforMainPage.cshtml";
+
+}
+
+@Styles.Render("~/Content/Answers.css")
+@Styles.Render("~/Content/font-awesome.css")
+@Styles.Render("~/Content/font-awesome.min.css")
+
+<h1>@Html.ViewBag.Data</h1>
+<div class="outer">
+    <span class="title-back-btn">
+        <h2>@Model.QTitle</h2>
+        <button class="btn-back" onclick="location.href='@Url.Action("Index", "Queries")'">
+            <img src="~/Image/next.png" width="25" height="25" />
+        </button>
+    </span>
+    <span class="small"><span class="categoryName">@Model.Category</span> Posted on @Model.QDate.ToShortDateString() by @Model.EName</span>
+    <hr />
+    <p class="query-description">
+        @Model.QDesc
+    </p>
+
+    <hr />
+    <div class="answers">
+        @using (Html.BeginForm("PostAnswer", "Answers"))
+        {
+            <div class="usr-answer">
+                <img src=@Url.Content(@Model.EPhoto) />
+                <input type="text" name="answer" placeholder="Add an answer..." required />
+                <input type="hidden" name="qid" value=@Model.QId />
+                <button type="submit">Post</button>
+            </div>
+        }
+        @Model.NumAns Answers
+        <ul>
+            @foreach (var item in Model.Answers)
+            {
+                <li>
+                    <div class="answer-group">
+                        @using (Html.BeginForm("UpVote", "Answers"))
+                        {
+                            <input type="hidden" name="aid" value=@item.AId />
+                            <input type="hidden" name="qid" value=@Model.QId />
+                            <button class="upvotes"><i class="fa fa-arrow-up" aria-hidden="true"></i> @item.UpVotes</button>
+                        }
+                        <div class="answer-details">
+                            <span class="answer-author">@item.EName</span>
+                            <p>
+                                @item.Value
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <br />
+            }
+        </ul>
+    </div>
+</div>

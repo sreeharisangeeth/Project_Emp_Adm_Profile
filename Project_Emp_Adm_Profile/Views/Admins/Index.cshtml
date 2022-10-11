@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Project_Emp_Adm_Profile.Models.Admin>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutForProfilePage.cshtml";
+}
+
+@*<div class="row m-1">
+        <div class="col-md-6 text-white ">
+            <h3>Index</h3>
+        </div>
+        <div class="col-md-6 text-right" style="margin-top:20px">
+            <i class="fa fa-2x fa-sign-out" aria-hidden="true" onclick="location.href='@Url.Action("signOut")'"></i>
+        </div>
+    </div>*@
+
+<div class="leftPanel">
+    @Html.Partial("PV_AdminEditLeftPanel", Session["AdminObj"])
+</div>
+<div class="RightPanel">
+
+    <h3>All Admin Details</h3>
+
+
+    <h4>@ViewBag.EditStatus</h4>
+    <p>
+        <i class="fa fa-3x fa-plus-circle" aria-hidden="true"
+           onclick="location.href='@Url.Action("Create", "Admins")'"></i>
+        @*@Html.ActionLink("Create New Admin", "Create")*@
+    </p>
+    <table style="background-color:white; border-radius:15px; border-top:hidden; text-align:center;" class="table table-borderless">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AName)
+            </th>
+            <th>
+                @Html.Label("Options")
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="font-size:1.3em;">
+                    @Html.DisplayFor(modelItem => item.AName)
+                </td>
+                <td>
+                    <i class="fa fa-2x fa-pencil-square-o" aria-hidden="true"
+                       onclick="location.href='@Url.Action("Edit", "Admins", new {id=item.AId})'"></i> |
+                    <i class="fa fa-2x fa-address-book-o" aria-hidden="true"
+                       onclick="location.href='@Url.Action("Details", "Admins", new {id=item.AId})'"></i> |
+                    <i class="fa fa-2x fa-trash-o" aria-hidden="true"
+                       onclick="location.href='@Url.Action("Delete","Admins", new {id=item.AId})'"></i>
+                </td>
+            </tr>
+        }
+    </table>
+    <div>
+        <h4 style="color:deepskyblue" onclick="location.href='@Url.Action("Index","Emps")'">
+            All Employee Details
+            <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+        </h4>
+    </div>
+    <div>
+        <i class="fa fa-2x fa-arrow-left" aria-hidden="true"
+           onclick="location.href='@Url.Action("Index","Queries")'"></i>
+    </div>
+    @*@Html.ActionLink("Employee Details", "Index", "Emps")*@
+</div>

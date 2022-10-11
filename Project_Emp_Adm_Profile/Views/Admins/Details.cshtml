@@ -1,0 +1,47 @@
+﻿@model Project_Emp_Adm_Profile.Models.Admin
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutForProfilePage.cshtml";
+
+}
+
+<h2>Details</h2>
+
+<div class="leftPanel">
+    @Html.Partial("PV_AdminEditLeftPanel", Session["AdminObj"])
+</div>
+<div class="RightPanel">
+    <div>
+        <h4>Admin</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt style = "font-size: 1.3em;background-color:azure;color:black;width:fit-content; border-radius:6px; font-family:'Comic Sans MS';">
+                @Html.DisplayNameFor(model => model.AName )
+            </dt>
+
+            <dd style = "font-size: 1.3em;background-color:azure;color:black;width:fit-content; border-radius:6px; font-family:'Comic Sans MS';">
+                @Html.DisplayFor(model => model.AName )
+            </dd>
+
+            @*<dt>
+                    @Html.DisplayNameFor(model => model.APassword)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.APassword)
+                </dd>*@
+
+        </dl>
+    </div>
+    &nbsp;
+    <p>
+        <i class="fa fa-3x fa-pencil-square-o" aria-hidden="true"
+           onclick="location.href='@Url.Action("Edit", "Admins", Model)'"></i>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <i class="fa fa-3x fa-address-book-o" aria-hidden="true"
+           onclick="location.href='@Url.Action("Index", "Admins")'"></i>
+        @*@Html.ActionLink("Edit", "Edit", new { id = Model.AId }) |
+        @Html.ActionLink("Admins Detail", "Index")*@
+    </p>
+</div>

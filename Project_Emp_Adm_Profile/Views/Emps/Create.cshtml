@@ -1,0 +1,77 @@
+﻿@model Project_Emp_Adm_Profile.Models.Emp
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutForProfilePage.cshtml";
+
+}
+
+<div class="leftPanel">
+    @Html.Partial("PV_AdminEditLeftPanel", Session["AdminObj"])
+</div>
+<div class="RightPanel">
+
+    @using (Html.BeginForm("Create", "Emps", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Emp</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.EId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EDesig, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EDesig, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EDesig, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EPhoto, new { htmlAttributes = new { @class = "form-control", @type = "file", @name = "EPhoto" } })
+                    @Html.ValidationMessageFor(model => model.EPhoto, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EPassword, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                    @Html.ValidationMessageFor(model => model.EPassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" style="color: black; font-size: 1.1em;width:70px;margin-left:130px ;background-color:aquamarine; font-family:Courier New, Courier, monospace;" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        <i class="fa fa-3x fa-arrow-left" aria-hidden="true"
+           onclick="location.href='@Url.Action("Index","Emps")'"></i>
+    </div>
+    </div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

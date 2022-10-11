@@ -1,0 +1,65 @@
+﻿@model Project_Emp_Adm_Profile.Models.Emp
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutForProfilePage.cshtml";
+
+}
+<div class="leftPanel">
+    @Html.Partial("PV_EmpEditLeftPanel", Session["EmpObj"])
+</div>
+<div class="RightPanel">
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Emp</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.EName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EDesig)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EDesig)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EPhoto)
+            </dt>
+
+            <dd>
+                <img src="@Url.Content(Model.EPhoto)" width="40px" height="40px" alt=@Model.EPhoto />
+
+            </dd>
+
+            @*<dt>
+                @Html.DisplayNameFor(model => model.EPassword)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EPassword)
+            </dd>*@
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default" style="color: black; font-size: 1.1em;width:70px;margin-left:130px ;background-color:aquamarine; font-family:Courier New, Courier, monospace;" />
+        <h4 style="color:deepskyblue" onclick="location.href='@Url.Action("Index","Emps")'">
+            All Employees Details
+            <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+        </h4>
+    </div>
+        }
+    </div>
+    </div>

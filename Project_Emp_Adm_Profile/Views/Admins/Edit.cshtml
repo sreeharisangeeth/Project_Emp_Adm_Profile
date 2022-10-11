@@ -1,0 +1,66 @@
+﻿@model Project_Emp_Adm_Profile.Models.Admin
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutForProfilePage.cshtml";
+
+}
+
+<h2>Edit</h2>
+
+<div class="leftPanel">
+    @Html.Partial("PV_AdminEditLeftPanel", Session["AdminObj"])
+</div>
+<div class="RightPanel">
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Admin</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.AId)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.AName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.APassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.APassword, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.APassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10" style="margin-left:230px;">
+                    <input type="submit" value="Save" class="btn btn-default" style="color: black; font-size: 1.1em;width:70px; background-color:aquamarine; font-family:Courier New, Courier, monospace;" />
+                </div>
+            </div>
+        </div>
+    }
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10 text-success">
+            @ViewBag.EditStatus
+        </div>
+    </div>
+    <div>
+        <h4 style="color:deepskyblue" onclick="location.href='@Url.Action("Index","Admins")'">
+            All Employee Details
+            <i class="fa fa-address-book-o" aria-hidden="true"></i>
+        </h4>
+        @*<i class="fa " aria-hidden="true"
+           onclick="location.href='@Url.Action("Index", "Admins")'"></i>*@
+    </div>
+</div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

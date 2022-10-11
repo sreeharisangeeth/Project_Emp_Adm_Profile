@@ -1,0 +1,66 @@
+﻿@model Project_Emp_Adm_Profile.Models.Emp
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutForProfilePage.cshtml";
+
+}
+@*<div class="row m-1">
+        <div class="col-md-6 text-white ">
+            <h3>Details</h3>
+        </div>
+        <div class="col-md-6 text-right" style="margin-top:20px">
+            <i class="fa fa-2x fa-sign-out" aria-hidden="true" onclick="location.href='@Url.Action("signOut")'"></i>
+        </div>
+    </div>*@
+<div class="leftPanel">
+    @Html.Partial("PV_AdminEditLeftPanel", Session["AdminObj"])
+</div>
+<div class="RightPanel">
+    <div>
+        <h4>Emp</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.EName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EDesig)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EDesig)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EPhoto)
+            </dt>
+
+            <dd>
+                <img src="@Url.Content(Model.EPhoto)" width="70px" height="70px" alt="@Model.EPhoto" />
+            </dd>
+
+            @*<dt>
+                    @Html.DisplayNameFor(model => model.EPassword)
+                </dt>
+
+                <dd>
+                    @Html.PasswordFor(model => model.EPassword)
+                </dd>*@
+
+        </dl>
+    </div>
+    @*<p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.EId })
+        </p>*@
+    <i class="fa fa-2x fa-pencil-square-o" aria-hidden="true"
+       onclick="location.href='@Url.Action("Edit", "Emps", new {id=Model.EId } )'"></i>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <i class="fa fa-2x fa-arrow-left" aria-hidden="true"
+       onclick="location.href='@Url.Action("Index","Admins")'"></i>
+</div>

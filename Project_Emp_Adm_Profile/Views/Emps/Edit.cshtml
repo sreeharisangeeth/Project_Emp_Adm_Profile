@@ -1,0 +1,75 @@
+﻿@model Project_Emp_Adm_Profile.Models.Emp
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutForProfilePage.cshtml";
+}
+    <div class="leftPanel">
+        @*@Html.Action("Details", new { id = Model.EId })*@
+        @Html.Partial("PV_EmpEditLeftPanel",Model)
+    </div>
+    <div class="RightPanel" style="font-size:1.5em;">
+        @using (Html.BeginForm("Edit", "Emps", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.EId)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.EName, new { htmlAttributes = new { @class = "form-control", @style = "font-size: 0.9em;background-color:lightcyan;font-family:'Comic Sans MS';" } })
+                        @Html.ValidationMessageFor(model => model.EName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EDesig, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.EDesig, new { htmlAttributes = new { @class = "form-control", @style = "font-size:0.9em;background-color:lightcyan;font-family:'Comic Sans MS';" } })
+                        @Html.ValidationMessageFor(model => model.EDesig, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EPhoto, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.EPhoto, new { htmlAttributes = new { @class = "form-control", @type = "file", @name = "EPhoto", @style = "font-size: 0.9em;background-color:lightcyan;font-family:'Comic Sans MS';" } })
+                        @Html.ValidationMessageFor(model => model.EPhoto, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.EPassword, new { htmlAttributes = new { @class = "form-control",@type="password", @style= "font-size: 0.9em;background-color:lightcyan;font-family:'Comic Sans MS';" } })
+                        @Html.ValidationMessageFor(model => model.EPassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10" style="margin-left:230px; ">
+                        <input type="submit" value="Save" class="btn btn-success" style="color: black; font-size: 1.1em;width:70px; background-color:aquamarine; font-family:Courier New, Courier, monospace;" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10 text-success">
+                        @ViewBag.FileStatus
+                    </div>
+                </div>
+                <div>
+                    @*<i class="fa fa-2x fa-arrow-left" aria-hidden="true"
+                       onclick="location.href='@Url.Action("Details", "Emps", new {id =Model.EId})'"></i>*@
+                    <i class="fa fa-2x fa-arrow-left" aria-hidden="true"
+                       onclick="location.href='@Url.Action("Index","Queries")'"></i>
+                </div>
+            </div>
+        }
+    </div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,66 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.hero {
+    /*background-image: url('../loginbg.jpg');*/
+    height: 100%;
+    width: 100%;
+    background-image: url('../Image/LoginBg4.jpg');
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+.formBox {
+    background: rgba(255,255,255,0.06);
+    box-shadow: 0 8px 32px 0 rgba(31,38,135,.37);
+    border-radius: 30px;
+    border-left: 1px solid rgba(255,255,255,.3);
+    border-top: 1px solid rgba(255,255,255,.3);
+    width: 40%;
+    height: 60%;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.my-auto {
+    /*margin-left:auto;
+    margin-right:auto;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.liStyle {
+    text-decoration: none;
+    list-style: none;
+    color: white;
+    text-align: center;
+    font-size: medium;
+}
+
+label {
+    font-size: medium;
+    color: white;
+    opacity: .8;
+    text-shadow: 2px 2px 4px rgba(0,0,0,.2);
+}
+
+.btn {
+    width: 80px;
+    height: 35px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    font-size: 8px;
+    text-align: center;
+}
+
+.table {
+    border-top: hidden;
+}

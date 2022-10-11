@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjectDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="AId" />
+    </Key>
+    <Property Name="AId" Type="int" Nullable="false" />
+    <Property Name="AName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="APassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="AnsId" />
+    </Key>
+    <Property Name="AnsId" Type="int" Nullable="false" />
+    <Property Name="Answer" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="EId" Type="int" />
+    <Property Name="QId" Type="int" />
+    <Property Name="AnsDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Emp">
+    <Key>
+      <PropertyRef Name="EId" />
+    </Key>
+    <Property Name="EId" Type="int" Nullable="false" />
+    <Property Name="EName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EDesig" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EPhoto" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="EPassword" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NewsFeed">
+    <Key>
+      <PropertyRef Name="NId" />
+    </Key>
+    <Property Name="NId" Type="int" Nullable="false" />
+    <Property Name="AId" Type="int" />
+    <Property Name="Topic" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descrip" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="NDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="newsfeedlikes">
+    <Key>
+      <PropertyRef Name="NId" />
+      <PropertyRef Name="EId" />
+    </Key>
+    <Property Name="NId" Type="int" Nullable="false" />
+    <Property Name="EId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Queryfeed">
+    <Key>
+      <PropertyRef Name="QId" />
+    </Key>
+    <Property Name="QId" Type="int" Nullable="false" />
+    <Property Name="Query" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="QDate" Type="datetime" Nullable="false" />
+    <Property Name="EId" Type="int" />
+  </EntityType>
+  <EntityType Name="UpVotes">
+    <Key>
+      <PropertyRef Name="AnsId" />
+      <PropertyRef Name="EId" />
+    </Key>
+    <Property Name="AnsId" Type="int" Nullable="false" />
+    <Property Name="EId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Answer__EId__29572725">
+    <End Role="Emp" Type="Self.Emp" Multiplicity="0..1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Emp">
+        <PropertyRef Name="EId" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="EId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Answer__QId__2A4B4B5E">
+    <End Role="Queryfeed" Type="Self.Queryfeed" Multiplicity="0..1" />
+    <End Role="Answer" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Queryfeed">
+        <PropertyRef Name="QId" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="QId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NewsFeed__AId__32E0915F">
+    <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+    <End Role="NewsFeed" Type="Self.NewsFeed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admin">
+        <PropertyRef Name="AId" />
+      </Principal>
+      <Dependent Role="NewsFeed">
+        <PropertyRef Name="AId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__newsfeedlik__EId__36B12243">
+    <End Role="Emp" Type="Self.Emp" Multiplicity="1" />
+    <End Role="newsfeedlikes" Type="Self.newsfeedlikes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Emp">
+        <PropertyRef Name="EId" />
+      </Principal>
+      <Dependent Role="newsfeedlikes">
+        <PropertyRef Name="EId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__newsfeedlik__NId__35BCFE0A">
+    <End Role="NewsFeed" Type="Self.NewsFeed" Multiplicity="1" />
+    <End Role="newsfeedlikes" Type="Self.newsfeedlikes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NewsFeed">
+        <PropertyRef Name="NId" />
+      </Principal>
+      <Dependent Role="newsfeedlikes">
+        <PropertyRef Name="NId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Queryfeed__EId__267ABA7A">
+    <End Role="Emp" Type="Self.Emp" Multiplicity="0..1" />
+    <End Role="Queryfeed" Type="Self.Queryfeed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Emp">
+        <PropertyRef Name="EId" />
+      </Principal>
+      <Dependent Role="Queryfeed">
+        <PropertyRef Name="EId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UpVotes__AnsId__2D27B809">
+    <End Role="Answer" Type="Self.Answer" Multiplicity="1" />
+    <End Role="UpVotes" Type="Self.UpVotes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Answer">
+        <PropertyRef Name="AnsId" />
+      </Principal>
+      <Dependent Role="UpVotes">
+        <PropertyRef Name="AnsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UpVotes__EId__2E1BDC42">
+    <End Role="Emp" Type="Self.Emp" Multiplicity="1" />
+    <End Role="UpVotes" Type="Self.UpVotes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Emp">
+        <PropertyRef Name="EId" />
+      </Principal>
+      <Dependent Role="UpVotes">
+        <PropertyRef Name="EId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProjectDbModelStoreContainer">
+    <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Answer" EntityType="Self.Answer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Emp" EntityType="Self.Emp" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NewsFeed" EntityType="Self.NewsFeed" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="newsfeedlikes" EntityType="Self.newsfeedlikes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Queryfeed" EntityType="Self.Queryfeed" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UpVotes" EntityType="Self.UpVotes" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Answer__EId__29572725" Association="Self.FK__Answer__EId__29572725">
+      <End Role="Emp" EntitySet="Emp" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Answer__QId__2A4B4B5E" Association="Self.FK__Answer__QId__2A4B4B5E">
+      <End Role="Queryfeed" EntitySet="Queryfeed" />
+      <End Role="Answer" EntitySet="Answer" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NewsFeed__AId__32E0915F" Association="Self.FK__NewsFeed__AId__32E0915F">
+      <End Role="Admin" EntitySet="Admin" />
+      <End Role="NewsFeed" EntitySet="NewsFeed" />
+    </AssociationSet>
+    <AssociationSet Name="FK__newsfeedlik__EId__36B12243" Association="Self.FK__newsfeedlik__EId__36B12243">
+      <End Role="Emp" EntitySet="Emp" />
+      <End Role="newsfeedlikes" EntitySet="newsfeedlikes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__newsfeedlik__NId__35BCFE0A" Association="Self.FK__newsfeedlik__NId__35BCFE0A">
+      <End Role="NewsFeed" EntitySet="NewsFeed" />
+      <End Role="newsfeedlikes" EntitySet="newsfeedlikes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Queryfeed__EId__267ABA7A" Association="Self.FK__Queryfeed__EId__267ABA7A">
+      <End Role="Emp" EntitySet="Emp" />
+      <End Role="Queryfeed" EntitySet="Queryfeed" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UpVotes__AnsId__2D27B809" Association="Self.FK__UpVotes__AnsId__2D27B809">
+      <End Role="Answer" EntitySet="Answer" />
+      <End Role="UpVotes" EntitySet="UpVotes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UpVotes__EId__2E1BDC42" Association="Self.FK__UpVotes__EId__2E1BDC42">
+      <End Role="Emp" EntitySet="Emp" />
+      <End Role="UpVotes" EntitySet="UpVotes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

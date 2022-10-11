@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutforMainPage.cshtml";
+
+}
+
+@Styles.Render("~/Content/Queries.css")
+
+
+
+<div class="outer" >
+
+    @using (Html.BeginForm("PostQuery", "Queries"))
+    {
+        <div class="new-query">
+            <h2>Ask a new query</h2>
+            <span class="title-category">
+                <input class="title" type="text" id="title" name="title" placeholder="Add query title here..." required />
+                <select class="new-category" name="newCategory" id="newCategory">
+                    <option>SOTI Mobi Control</option>
+                    <option>SOTI Central</option>
+                    <option>SOTI XSight</option>
+                    <option>SOTI Snap</option>
+                    <option>SOTI Connect</option>
+                    <option>SOTI Identity</option>
+                    <option>Code</option>
+                    <option>Management</option>
+                    <option>Product</option>
+                </select>
+            </span>
+            <textarea class="description" id="decscription" name="description" placeholder="Add query description here..." rows="4" maxlength="1000" required></textarea><br />
+            <button class="btn-post" type="submit">Post</button>
+        </div>
+    }
+
+    @using (Html.BeginForm("Index", "Queries"))
+    {
+        <div class="search">
+            <select class="category" id="category" name="category">
+                <option>All</option>
+                <option>SOTI Mobi Control</option>
+                <option>SOTI Central</option>
+                <option>SOTI XSight</option>
+                <option>SOTI Snap</option>
+                <option>SOTI Connect</option>
+                <option>SOTI Identity</option>
+                <option>Code</option>
+                <option>Management</option>
+                <option>Product</option>
+            </select>
+            <input class="key" type="text" name="searchText" id="searchText" placeholder="Search here..." />
+            <button class="btn-search">Search</button>
+        </div>
+    }
+
+    <ul class="posts">
+        @foreach (var item in Model)
+        {
+            <li>
+                <div class="post">
+                    <div class="employee">
+                        <img src=@Url.Content(item.EPhoto) />
+                        <div class="emp-details">
+                            @item.EName<br />
+                            @item.EDesig<br />
+                            <br />
+                            Posted on @item.QDate.ToShortDateString()
+                        </div>
+                    </div>
+                    <div class="categoryName">
+                        @item.Category
+                    </div>
+                    <div class="query">
+                        <h3>@item.QTitle</h3>
+                    </div>
+                    <button onclick="location.href='@Url.Action("Index", "Answers",new {qId=item.QId})'">
+                        Answer
+                    </button>
+
+                </div>
+            </li>
+        }
+    </ul>
+
+</div>

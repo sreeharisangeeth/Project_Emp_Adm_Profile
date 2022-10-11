@@ -1,0 +1,76 @@
+﻿@model Project_Emp_Adm_Profile.Models.Admin
+
+
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutForProfilePage.cshtml";
+}
+
+
+
+
+<div class="leftPanel">
+    @Html.Partial("PV_AdminEditLeftPanel", Session["AdminObj"])
+</div>
+<div class="RightPanel" style="font-size:1.5em;">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+
+        <div class="form-horizontal">
+            <h4>Admin</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.AId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AId, new { htmlAttributes = new { @class = "form-control", @style = "font-size: 0.9em;background-color:lightcyan;font-family:'Comic Sans MS';" } })
+                    @Html.ValidationMessageFor(model => model.AId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.AName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.AName, new { htmlAttributes = new { @class = "form-control", @style = "font-size: 0.9em;background-color:lightcyan;font-family:'Comic Sans MS';" } })
+                    @Html.ValidationMessageFor(model => model.AName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.APassword, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.APassword, new { htmlAttributes = new { @class = "form-control", @type = "password", @style = "font-size: 0.9em;background-color:lightcyan;font-family:'Comic Sans MS';" } })
+                    @Html.ValidationMessageFor(model => model.APassword, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" style="color: black; font-size: 1.1em;width:70px;margin-left:130px ;background-color:deepskyblue; font-family:Courier New, Courier, monospace;" />
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+    <div>
+        <h4 style="color:deepskyblue" onclick="location.href='@Url.Action("Index","Admins")'">
+            All Admin Details
+            <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+        </h4>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

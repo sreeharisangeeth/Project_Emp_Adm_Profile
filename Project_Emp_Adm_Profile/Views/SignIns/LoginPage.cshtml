@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "LoginPage";
+    Layout = "~/Views/Shared/_LayoutforLogin.cshtml";
+}
+<div class="formBox">
+    <h1 class="text-center text-white display-2" style=" padding-top: 45px;">SOTI ChatterS</h1>
+    <div style="padding-top:25px;">
+    </div>
+    <table class="table table-borderless" style=" border : none">
+        <thead>
+            <tr class="row">
+                <td class="col-sm-12 ">
+                    <div class="my-auto">
+                        <img src="~/Image/emp3.png" width="125" onclick="location.href='@Url.Action("SignIn","SignIns")'" />
+                    </div>
+                    @*<div class="my-auto">
+                        <a href="@Url.Action("SignIn", "SignIns")" style="" class=" liStyle" whatever="">Log In</a>
+                    </div>*@
+                </td>
+            </tr>
+        </thead>
+    </table>
+</div>
+

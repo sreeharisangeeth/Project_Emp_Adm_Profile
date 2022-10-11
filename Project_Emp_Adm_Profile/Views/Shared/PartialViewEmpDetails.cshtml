@@ -1,0 +1,75 @@
+﻿@model Project_Emp_Adm_Profile.Models.Emp
+<link href="~/css/font-awesome.min.css" rel="stylesheet" />
+<div  style="background-color: white; width: 100%; height: 100%;  border-radius: 25px; position: absolute;">
+    <div style="text-align:center; background-color:deepskyblue; height:130px;border-top-left-radius:25px;border-top-right-radius:25px; ">
+        <img src="@Url.Content(Model.EPhoto)" alt="@Model.EPhoto" style="position:relative ;width:100px; height:100px; top:80px;border-radius:50%; " /> <br />
+    </div>
+    <div style="position:relative ;top:70px; text-align:center; font-weight:bold;font-size:1.8em ;font-family:Garamond;">
+        @Html.DisplayFor(model => model.EName)<br />
+
+        @Html.DisplayFor(model => model.EDesig)<br />
+    </div>
+    <div style="position:absolute; top:80%; left:130px;">
+        <i class="fa fa-3x fa-pencil-square-o" aria-hidden="true"
+           onclick="location.href='@Url.Action("Edit", "Emps",new {id=Model.EId})'"></i>
+    </div>
+    <div style="position:absolute; top:88%; left:130px;">
+        <i class="fa fa-3x fa-sign-out" aria-hidden="true"
+           onclick="location.href='@Url.Action("signOut","SignIns")'"></i>
+    </div>
+</div>
+
+@*<style>
+    .empProf {
+        width: 20%;
+        margin-top: 6%;
+        margin-left: 2%;
+        height: 87%;
+        background-color: deepskyblue;
+        border-radius:25px !important;
+    }
+    .table > tbody > tr > td{
+        vertical-align:middle;
+        border:hidden;
+    }
+</style>
+<div class="table-responsive">
+    <table class="empProf table ">
+        <tbody>
+            <tr style="background-color:lightyellow; height:20%; position:static;" class="">
+                <td class="text-center">
+                    <img src="@Url.Content(Model.EPhoto)" alt="@Model.EPhoto"
+                         style="position:relative ;width:50%; height:100%; top:50%; border-radius:50%; " /> <br />
+                </td>
+            </tr>
+            <tr style="height:70px;">
+                <td>&nbsp;</td>
+            </tr>
+            <tr style="height: 40px; position: relative; font-weight: bold; font-size: 1.8em; font-family: Garamond;" class="">
+                <td class=" text-center text-success">
+                    @Html.DisplayFor(model => model.EName)<br />
+                </td>
+            </tr>
+            <tr style="height: 40px; position: static; font-weight: bold; font-size: 1.8em; font-family: Garamond; " class="">
+                <td class=" text-center text-primary">
+                    @Html.DisplayFor(model => model.EDesig)<br />
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+            <tr style="height:60px;" class="text-center">
+                <td>
+                    <i class="fa fa-2x fa-pencil-square-o" aria-hidden="true"
+                       onclick="location.href='@Url.Action("Edit", new {id=Model.EId})'"></i>
+                </td>
+            </tr>
+            <tr style="height:60px;" class="text-center">
+                <td>
+                    <i class="fa fa-2x fa-sign-out" aria-hidden="true"
+                       onclick="location.href='@Url.Action("signOut","SignIns")'"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>*@

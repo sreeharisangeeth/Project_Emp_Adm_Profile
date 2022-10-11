@@ -1,0 +1,19 @@
+﻿@model Project_Emp_Adm_Profile.Models.Admin
+<link href="~/css/font-awesome.min.css" rel="stylesheet" />
+<div style="background-color: white; width: 100%; height: 100%; border-radius: 25px; position: absolute;">
+    <div style="text-align:center; background-color:deepskyblue; height:130px;border-top-left-radius:25px;border-top-right-radius:25px; ">
+        <img src="~/Image/AdminProfile.png" alt="AdminProfile" style="position:relative ;width:100px; height:100px; top:80px;border-radius:15%; " /> <br />
+    </div>
+    <div style="position:relative ;top:70px; text-align:center; font-weight:bold;font-size:1.8em ;font-family:Garamond;">
+        @Html.DisplayFor(model => model.AName)<br />
+
+    </div>
+    <div style="position:absolute; top:80%; left:130px;">
+        <i class="fa fa-3x fa-id-card" aria-hidden="true"
+           onclick="location.href='@Url.Action("Index","Admins")'"></i>
+    </div>
+    <div style="position:absolute; top:88%; left:130px;">
+        <i class="fa fa-4x fa-sign-out" aria-hidden="true"
+           onclick="location.href='@Url.Action("signOut","SignIns")'"></i>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+﻿<!--@model IEnumerable<Project_Emp_Adm_Profile.Models.NewsFeed>
+
+@{
+    ViewBag.Title = "Index";
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>-->
+
+<!-- CSS only -->
+<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">-->
+<!-- JavaScript Bundle with Popper -->
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    .fa {
+        font-size: 50px;
+        cursor: pointer;
+        user-select: none;
+    }
+</style>
+
+<div class="card-deck">
+    @foreach (var item in Model)
+    {
+        <div class="card w-25 text-center" id="newsid" style="overflow-wrap:break-word ;overflow:scroll">
+            <div class="card-body">
+                <p>
+                    @Html.ActionLink("Create New", "Create")
+                </p>
+                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Topic)</h5>
+
+                <h6 class="card-text">@Html.DisplayFor(modelItem => item.Descrip)</h6>
+
+                @using (Html.BeginForm("Newsfeedlike", "NewsFeeds"))
+                {
+                    <button>
+                        <i onclick="myFunction(this)" class="fa fa-thumbs-o-up"></i>
+
+                    </button>
+                    <span>@item.countlikes</span>
+                    <input type="hidden" name="nid" value=@item.NId />
+
+                }
+
+
+            </div>
+            <div class="card-footer">
+                <small class="text-muted">@Html.DisplayFor(modelItem => item.NDate) @Html.DisplayFor(modelItem => item.AId)</small>
+            </div>
+            <div>
+                @Html.ActionLink("Edit", "Edit", new { id = item.NId })
+                @Html.ActionLink("Details", "Details", new { id = item.NId })
+                @Html.ActionLink("Delete", "Delete", new { id = item.NId })
+            </div>
+        </div>
+    }
+</div>-->
